@@ -17,6 +17,7 @@ public class PatientController {
     public List<Patient> getPatient(){
         return patientService.getPatientList();
     }
+
     @GetMapping("/{id}")
     public Patient getPatientByid(@PathVariable Long id){
         return patientService.getPatientListById(id);
@@ -30,6 +31,7 @@ public class PatientController {
         patientService.deletePatient(id);
         return ResponseEntity.noContent().build();
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Patient> updatePatient(@PathVariable Long id,@RequestBody Patient patient){
         Patient p=patientService.updatePatient(id,patient);

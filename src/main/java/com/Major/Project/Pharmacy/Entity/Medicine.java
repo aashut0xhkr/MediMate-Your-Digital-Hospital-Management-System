@@ -1,6 +1,8 @@
 package com.Major.Project.Pharmacy.Entity;
 
 
+import com.Major.Project.Patient.Entity.Patient;
+import com.Major.Project.Staff.Entity.Staff;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +24,14 @@ public class Medicine {
     private int quantity;
     private LocalDate expiryDate;
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    private Staff pharmacist;
 
 }
 

@@ -1,9 +1,8 @@
 package com.Major.Project.Billing.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.Major.Project.Patient.Entity.Patient;
+import com.Major.Project.Staff.Entity.Staff;
+import jakarta.persistence.*;
 import jdk.jfr.DataAmount;
 import lombok.*;
 
@@ -25,4 +24,12 @@ public class Bill {
     private String description;
     private LocalDateTime billingDate;
     private String paymentStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    private Staff handledBy;
 }

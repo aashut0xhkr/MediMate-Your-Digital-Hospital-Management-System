@@ -1,9 +1,8 @@
 package com.Major.Project.Appointment.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.Major.Project.Doctor.Entity.Doctor;
+import com.Major.Project.Patient.Entity.Patient;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -22,6 +21,14 @@ public class Appointment {
     private Long patientId;
     private Long doctorId;
     private LocalDateTime appointmentTime;
-    private String status; // e.g., Scheduled, Completed, Cancelled
+    private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
 
 }

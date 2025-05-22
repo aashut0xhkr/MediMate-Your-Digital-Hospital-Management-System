@@ -1,9 +1,7 @@
 package com.Major.Project.Inventory.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.Major.Project.Staff.Entity.Staff;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,4 +22,8 @@ public class Inventory {
     private int quantity;
     private String supplier;
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    private Staff managedBy;
 }

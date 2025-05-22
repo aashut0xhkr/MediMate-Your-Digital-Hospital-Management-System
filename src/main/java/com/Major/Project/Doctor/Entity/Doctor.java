@@ -1,7 +1,10 @@
 package com.Major.Project.Doctor.Entity;
 
+import com.Major.Project.Appointment.Entity.Appointment;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -18,5 +21,8 @@ public class Doctor {
     private String specialisation;
     private String contact;
     private String email;
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<Appointment> appointments;
 
 }
