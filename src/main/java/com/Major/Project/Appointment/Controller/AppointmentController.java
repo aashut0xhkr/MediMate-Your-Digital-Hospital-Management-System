@@ -20,21 +20,21 @@ public class AppointmentController {
         return appointmentService.getAppointments();
     }
     @GetMapping("/{id}")
-    public Appointment getAppointmentById(@PathVariable Long appointmentId){
-        return appointmentService.getAppointmentById(appointmentId);
+    public Appointment getAppointmentById(@PathVariable Long id){
+        return appointmentService.getAppointmentById(id);
     }
     @PostMapping
     public Appointment createAppointment(@RequestBody Appointment appointment){
         return appointmentService.CreateAppointment(appointment);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> DeleteAppointment(@PathVariable Long appointmentId){
-        appointmentService.DeleteAppointment(appointmentId);
+    public ResponseEntity<Void> DeleteAppointment(@PathVariable Long id){
+        appointmentService.DeleteAppointment(id);
         return ResponseEntity.noContent().build();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Appointment> updateAppointment(@PathVariable Long appointmentId,Appointment appointment ){
-        Appointment updated = appointmentService.updateAppointment(appointmentId, appointment);
+    public ResponseEntity<Appointment> updateAppointment(@PathVariable Long id,@RequestBody Appointment appointment ){
+        Appointment updated = appointmentService.updateAppointment(id, appointment);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
     @GetMapping("/doctors/{doctorId}")

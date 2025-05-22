@@ -9,26 +9,20 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long appointmentId;
-    private Long patientId;
-    private Long doctorId;
     private LocalDateTime appointmentTime;
     private String status;
-
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    private Patient patient;
+    private Patient patientId;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
+    private Doctor doctorId;
 
 }

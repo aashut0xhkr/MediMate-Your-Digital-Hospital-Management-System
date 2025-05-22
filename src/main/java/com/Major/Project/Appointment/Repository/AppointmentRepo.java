@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface AppointmentRepo extends JpaRepository<Appointment,Long> {
-    List<Appointment> findByDoctorId(Long DocId);
-    List<Appointment> findByPatientId(Long patientId);
+    List<Appointment> findByDoctorDocId(Long DocId);
+    List<Appointment> findByPatientPatientId(Long patientId);
 }

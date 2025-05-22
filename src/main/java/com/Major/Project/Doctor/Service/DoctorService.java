@@ -1,5 +1,6 @@
 package com.Major.Project.Doctor.Service;
 
+import com.Major.Project.Configuration.CustomException;
 import com.Major.Project.Doctor.Entity.Doctor;
 import com.Major.Project.Doctor.Repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class DoctorService {
         return doctorRepository.findAll();
     }
     public Doctor getDoctorListById(Long docID) {
-        return doctorRepository.findById(docID).orElse(null);
+        return doctorRepository.findById(docID).orElseThrow(()->new CustomException("ID not found"));
     }
     public Doctor createDoctor(Doctor d){
         return doctorRepository.save(d);
