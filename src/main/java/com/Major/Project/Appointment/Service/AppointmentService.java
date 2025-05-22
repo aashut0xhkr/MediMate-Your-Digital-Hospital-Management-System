@@ -2,7 +2,6 @@ package com.Major.Project.Appointment.Service;
 
 import com.Major.Project.Appointment.Entity.Appointment;
 import com.Major.Project.Appointment.Repository.AppointmentRepo;
-import com.Major.Project.Patient.Entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
