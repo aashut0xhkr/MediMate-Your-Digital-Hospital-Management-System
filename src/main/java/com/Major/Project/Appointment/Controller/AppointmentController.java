@@ -15,7 +15,7 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
-    @GetMapping()
+    @GetMapping
     public List<Appointment> getAllAppointment(){
         return appointmentService.getAppointments();
     }

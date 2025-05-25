@@ -19,10 +19,10 @@ public class Appointment {
     private String status;
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    private Patient patientId;
+    private Patient patient;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
-    private Doctor doctorId;
+    private Doctor doctor;
 
 }
