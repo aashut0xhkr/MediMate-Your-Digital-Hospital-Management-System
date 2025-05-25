@@ -22,11 +22,11 @@ public class LabTest {
     private String result;
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-
-    @ManyToOne
-    @JoinColumn(name = "staff_id")
-    private Staff labTechnician;
+//    @ManyToOne
+//    @JoinColumn(name = "patient_id")
+//    private Patient patient;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "staff_id")
+//    private Staff labTechnician;
 }

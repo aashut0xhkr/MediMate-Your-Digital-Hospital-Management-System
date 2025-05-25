@@ -25,13 +25,13 @@ public class Medicine {
     private LocalDate expiryDate;
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-
-    @ManyToOne
-    @JoinColumn(name = "staff_id")
-    private Staff pharmacist;
+//    @ManyToOne
+//    @JoinColumn(name = "patient_id")
+//    private Patient patient;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "staff_id")
+//    private Staff pharmacist;
 
 }
 

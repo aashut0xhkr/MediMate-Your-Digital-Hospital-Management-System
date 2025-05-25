@@ -14,7 +14,7 @@ import java.util.List;
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long DocId;
+    private Long docId;
     @NotNull
     private String name;
     private String specialisation;

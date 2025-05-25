@@ -3,6 +3,8 @@ package com.Major.Project.Appointment.Service;
 import com.Major.Project.Appointment.Entity.Appointment;
 import com.Major.Project.Appointment.Repository.AppointmentRepo;
 import com.Major.Project.Configuration.CustomException;
+import com.Major.Project.Doctor.Repository.DoctorRepository;
+import com.Major.Project.Patient.Repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,12 @@ public class AppointmentService {
     @Autowired
     private AppointmentRepo appointmentRepo;
 
+    @Autowired
+    private PatientRepository patientRepository;
+
+    @Autowired
+    private DoctorRepository doctorRepository;
+
     public List<Appointment> getAppointments(){
         return appointmentRepo.findAll();
     }
@@ -21,23 +29,23 @@ public class AppointmentService {
         return appointmentRepo.findById(appointmentId).orElseThrow(()-> new CustomException("id not find"));
     }
     public List<Appointment> findByDoctorId(Long DocId){
-        return appointmentRepo.findByDoctorDocId(DocId);
+        return appointmentRepo.findByDoctor_DocId(DocId);
     }
     public List<Appointment> findByPatientId(Long patientId){
-        return appointmentRepo. findByPatientPatientId(patientId);
-    }
-    public Appointment CreateAppointment(Appointment appointment){
-        return appointmentRepo.save(appointment);
+        return appointmentRepo.findByPatient_PatientId(patientId);
     }
     public void DeleteAppointment(Long id){
          appointmentRepo.deleteById(id);
     }
+    public Appointment CreateAppointment(Appointment appointment){
+        return appointmentRepo.save(appointment);
+    }
     public Appointment updateAppointment(Long appointmentId,Appointment appointment){
         Appointment appointmentById = getAppointmentById(appointmentId);
         if(appointmentById==null) return null;
-        appointmentById.setPatientId(appointment.getPatientId());
+        appointmentById.setPatient(appointment.getPatient());
         appointmentById.setAppointmentTime(appointment.getAppointmentTime());
-        appointmentById.setDoctorId(appointment.getDoctorId());
+        appointmentById.setDoctor(appointment.getDoctor());
         appointmentById.setStatus(appointment.getStatus());
         return appointmentRepo.save(appointmentById);
 

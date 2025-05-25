@@ -18,9 +18,9 @@ public class BillService {
     public Bill getBillById(Long billID){
         return billingRepository.findById(billID).orElse(null);
     }
-    public List<Bill> getBillByPatientId(Long patientId){
-        return billingRepository.findByPatientId(patientId);
-    }
+//    public List<Bill> getBillByPatientId(Long patientId){
+//        return billingRepository.findByPatientId(patientId);
+//    }
     public Bill createBill(Bill bill){
         bill.setBillingDate(java.time.LocalDateTime.now());
         return billingRepository.save(bill);

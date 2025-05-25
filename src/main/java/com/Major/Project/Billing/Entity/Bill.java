@@ -25,11 +25,11 @@ public class Bill {
     private LocalDateTime billingDate;
     private String paymentStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-
-    @ManyToOne
-    @JoinColumn(name = "staff_id")
-    private Staff handledBy;
+//    @ManyToOne
+//    @JoinColumn(name = "patient_id")
+//    private Patient patient;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "staff_id")
+//    private Staff handledBy;
 }

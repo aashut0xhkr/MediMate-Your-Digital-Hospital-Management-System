@@ -23,7 +23,7 @@ public class Inventory {
     private String supplier;
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "staff_id")
-    private Staff managedBy;
+//    @ManyToOne
+//    @JoinColumn(name = "staff_id")
+//    private Staff managedBy;
 }
