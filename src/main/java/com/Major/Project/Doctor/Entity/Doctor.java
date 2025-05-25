@@ -1,6 +1,7 @@
 package com.Major.Project.Doctor.Entity;
 
 import com.Major.Project.Appointment.Entity.Appointment;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties("appointments")
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
