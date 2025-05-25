@@ -37,12 +37,12 @@ public class AppointmentController {
         Appointment updated = appointmentService.updateAppointment(id, appointment);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
-    @GetMapping("/doctors/{doctorId}")
+    @GetMapping("/doctor/{doctorId}")
     public List<Appointment> getByDoctor(@PathVariable Long doctorId) {
         return appointmentService.findByDoctorId(doctorId);
     }
 
-    @GetMapping("/patients/{patientId}")
+    @GetMapping("/patient/{patientId}")
     public List<Appointment> getByPatient(@PathVariable Long patientId) {
         return appointmentService.findByPatientId(patientId);
     }

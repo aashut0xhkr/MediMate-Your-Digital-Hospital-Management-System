@@ -4,6 +4,7 @@ import com.Major.Project.Appointment.Entity.Appointment;
 import com.Major.Project.Billing.Entity.Bill;
 import com.Major.Project.Laboratory.Entity.LabTest;
 import com.Major.Project.Pharmacy.Entity.Medicine;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties("appointments")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
