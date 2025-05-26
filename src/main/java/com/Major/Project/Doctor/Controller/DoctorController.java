@@ -22,7 +22,7 @@ public class DoctorController {
     public Doctor getDoctorById(@PathVariable Long id){
         return doctorService.getDoctorListById(id);
     }
-    @PostMapping
+    @PostMapping()
     public Doctor saveDoctor(@RequestBody Doctor doctor){
         return doctorService.createDoctor(doctor);
     }

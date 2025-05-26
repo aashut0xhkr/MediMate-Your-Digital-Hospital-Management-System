@@ -23,7 +23,7 @@ public class Doctor {
     private String email;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "doctor-appointments")
     private List<Appointment> appointments;
 
 }
