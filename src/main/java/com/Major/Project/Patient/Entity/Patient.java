@@ -5,6 +5,7 @@ import com.Major.Project.Billing.Entity.Bill;
 import com.Major.Project.Laboratory.Entity.LabTest;
 import com.Major.Project.Pharmacy.Entity.Medicine;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties("appointments")
+
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +27,7 @@ public class Patient {
     private String contact;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Appointment> appointments;
 
 //    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
