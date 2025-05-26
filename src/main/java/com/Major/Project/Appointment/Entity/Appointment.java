@@ -21,12 +21,12 @@ public class Appointment {
     private String status;
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    @JsonBackReference
+    @JsonBackReference(value = "patient-appointments")
     private Patient patient;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
-    @JsonBackReference
+    @JsonBackReference(value = "doctor-appointments")
     private Doctor doctor;
 
 }

@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +22,7 @@ public class Patient {
     private String contact;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "patient-appointments")
     private List<Appointment> appointments;
 
 //    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
