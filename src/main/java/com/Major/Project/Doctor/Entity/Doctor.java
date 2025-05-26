@@ -14,7 +14,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties("appointments")
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
