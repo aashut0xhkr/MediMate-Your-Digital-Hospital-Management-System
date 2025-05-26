@@ -1,7 +1,9 @@
 package com.Major.Project.Doctor.Entity;
 
 import com.Major.Project.Appointment.Entity.Appointment;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -24,6 +26,7 @@ public class Doctor {
     private String email;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Appointment> appointments;
 
 }
