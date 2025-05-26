@@ -1,10 +1,6 @@
 package com.Major.Project.Patient.Entity;
 
 import com.Major.Project.Appointment.Entity.Appointment;
-import com.Major.Project.Billing.Entity.Bill;
-import com.Major.Project.Laboratory.Entity.LabTest;
-import com.Major.Project.Pharmacy.Entity.Medicine;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
