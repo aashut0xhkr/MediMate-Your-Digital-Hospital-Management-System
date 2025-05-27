@@ -1,9 +1,8 @@
 package com.Major.Project.Billing.Entity;
 
 import com.Major.Project.Patient.Entity.Patient;
-import com.Major.Project.Staff.Entity.Staff;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import jdk.jfr.DataAmount;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -25,9 +24,10 @@ public class Bill {
     private LocalDateTime billingDate;
     private String paymentStatus;
 
-//    @ManyToOne
-//    @JoinColumn(name = "patient_id")
-//    private Patient patient;
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    @JsonBackReference(value = "patient-billings")
+    private Patient patient;
 //
 //    @ManyToOne
 //    @JoinColumn(name = "staff_id")

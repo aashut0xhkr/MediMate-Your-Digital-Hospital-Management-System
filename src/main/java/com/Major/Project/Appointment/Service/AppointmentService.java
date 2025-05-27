@@ -39,16 +39,27 @@ public class AppointmentService {
     public void DeleteAppointment(Long id){
          appointmentRepo.deleteById(id);
     }
-    public Appointment CreateAppointment(Appointment appointment){
+    public Appointment CreateAppointment(Appointment appointment) {
+        if (appointment.getPatient() == null || appointment.getPatient().getPatientId() == null) {
+            throw new CustomException("Patient ID must not be null");
+        }
+        if (appointment.getDoctor() == null || appointment.getDoctor().getDocId() == null) {
+            throw new CustomException("Doctor ID must not be null");
+        }
+
         Long patientId = appointment.getPatient().getPatientId();
         Long docId = appointment.getDoctor().getDocId();
 
-        Patient patientNotFound = patientRepository.findById(patientId).orElseThrow(() -> new CustomException("Patient not found"));
-        Doctor doctorNotFound = doctorRepository.findById(docId).orElseThrow(() -> new CustomException("Doctor Not Found"));
-        appointment.setPatient(patientNotFound);
-        appointment.setDoctor(doctorNotFound);
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new CustomException("Patient not found"));
+        Doctor doctor = doctorRepository.findById(docId)
+                .orElseThrow(() -> new CustomException("Doctor not found"));
+
+        appointment.setPatient(patient);
+        appointment.setDoctor(doctor);
         return appointmentRepo.save(appointment);
     }
+
 
 
     public Appointment updateAppointment(Long appointmentId,Appointment appointment){
