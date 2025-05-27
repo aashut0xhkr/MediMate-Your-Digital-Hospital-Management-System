@@ -18,7 +18,6 @@ public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long billID;
-    private Long patientId;
     private Double amount;
     private String description;
     private LocalDateTime billingDate;

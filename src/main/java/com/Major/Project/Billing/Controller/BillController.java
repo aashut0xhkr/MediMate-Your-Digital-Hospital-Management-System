@@ -22,10 +22,10 @@ public class BillController {
         Bill bill = billService.getBillById(billID);;
         return bill != null ? ResponseEntity.ok(bill) : ResponseEntity.notFound().build();
     }
-//    @GetMapping("/Patientsss/{id}")
-//    public List<Bill> getBillByPatientID(@PathVariable Long patientId){
-//        return billService.getBillByPatientId(patientId);
-//    }
+    @GetMapping("/Patient/{id}")
+    public List<Bill> getBillByPatientID(@PathVariable Long patientId){
+        return billService.getBillByPatientId(patientId);
+    }
     @PostMapping("/bill")
     public Bill CreateBill(@RequestBody Bill bill){
         return billService.createBill(bill);
