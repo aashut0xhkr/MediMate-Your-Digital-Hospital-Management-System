@@ -23,11 +23,9 @@ public class Bill {
     private LocalDateTime billingDate;
     private String paymentStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    @JsonBackReference(value = "patient-billings")
-    private Patient patient;
-//
+//    @ManyToOne
+//    @JoinColumn(name = "patient_id")
+//    private Patient patientId;
 //    @ManyToOne
 //    @JoinColumn(name = "staff_id")
 //    private Staff handledBy;
