@@ -26,9 +26,9 @@ public class Patient {
     @JsonManagedReference(value = "patient-appointments")
     private List<Appointment> appointments;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "patient-billings")
-    private List<Bill> billings;
+//    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+//    @JsonManagedReference(value = "patient-billings")
+//    private List<Bill> billings;
 
 //    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
 //    private List<LabTest> laboratoryTests;
