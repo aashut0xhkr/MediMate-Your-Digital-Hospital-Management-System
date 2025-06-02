@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/HMS")
+@RequestMapping("/HMS/Inventory")
 public class InventoryController {
     @Autowired
     private InventoryService inventoryService;
 
-    @GetMapping("/Inventory")
+    @GetMapping
     public List<Inventory> getItems(){
         return inventoryService.getAllItems();
     }
-    @GetMapping("/Inventory/{id}")
+    @GetMapping("/{inventoryId}")
     public Inventory getItemsById(@PathVariable Long inventoryId){
-        return inventoryService.getAllItemsById(inventoryId);
+        return inventoryService.getItemsById(inventoryId);
     }
     @GetMapping("/status/{status}")
     public List<Inventory> getItemsByStatus(@PathVariable String status){
@@ -30,17 +30,16 @@ public class InventoryController {
     public List<Inventory> getItemsByCategory(@PathVariable String category){
         return inventoryService.getItemByCategory(category);
     }
-    @PostMapping("/Inventory")
+    @PostMapping
     public Inventory createItems(@RequestBody Inventory inventory){
         return inventoryService.createItem(inventory);
     }
-    @DeleteMapping("/Inventory/{id}")
+    @DeleteMapping("/{inventoryId}")
     public ResponseEntity<Void> deleteItem(@PathVariable Long inventoryId){
         inventoryService.deleteItem(inventoryId);
         return ResponseEntity.noContent().build();
     }
-
-    @PutMapping("/Inventory/{id}")
+    @PutMapping("/{inventoryId}")
     public ResponseEntity<Inventory> updateItems(@PathVariable Long inventoryId,@RequestBody Inventory inventory){
        Inventory updated= inventoryService.updateItem(inventoryId,inventory);
        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();

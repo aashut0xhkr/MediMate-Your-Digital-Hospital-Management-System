@@ -1,15 +1,14 @@
 package com.Major.Project.Staff.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.Major.Project.Inventory.Entity.Inventory;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
-@Getter
-@Setter
-@ToString
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Staff {
@@ -22,4 +21,8 @@ public class Staff {
     private String phone;
     private String email;
     private String status;
+
+//    @OneToMany(mappedBy = "managedBy", cascade = CascadeType.ALL)
+//    @JsonIgnoreProperties("managedBy")
+//    private List<Inventory> inventory;
 }
