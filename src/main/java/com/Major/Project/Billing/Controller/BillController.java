@@ -2,7 +2,7 @@ package com.Major.Project.Billing.Controller;
 
 import com.Major.Project.Billing.Entity.Bill;
 import com.Major.Project.Billing.Service.BillService;
-//import com.Major.Project.Patient.Entity.Patient;
+import com.Major.Project.Patient.Entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +23,10 @@ public class BillController {
         Bill bill = billService.getBillById(id);;
         return bill != null ? ResponseEntity.ok(bill) : ResponseEntity.notFound().build();
     }
-//    @GetMapping("/Patient")
-//    public List<Bill> getBillByPatientID(@PathVariable Patient patientId){
-//        return billService.getBillByPatient(patientId);
-//    }
+    @GetMapping("/{patientId}")
+    public List<Bill> getBillByPatientID(@PathVariable Patient patientId){
+        return billService.getBillByPatient(patientId);
+    }
     @PostMapping
     public Bill CreateBill(@RequestBody Bill bill){
         return billService.createBill(bill);

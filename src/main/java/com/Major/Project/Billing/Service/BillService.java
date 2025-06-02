@@ -2,7 +2,7 @@ package com.Major.Project.Billing.Service;
 
 import com.Major.Project.Billing.Entity.Bill;
 import com.Major.Project.Billing.Repository.BillingRepository;
-//import com.Major.Project.Patient.Entity.Patient;
+import com.Major.Project.Patient.Entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +19,9 @@ public class BillService {
     public Bill getBillById(Long billID){
         return billingRepository.findById(billID).orElse(null);
     }
-//    public List<Bill> getBillByPatient(Patient patientId){
-//        return billingRepository.findByPatientId(patientId);
-//    }
+    public List<Bill> getBillByPatient(Patient patientId){
+        return billingRepository.findByPatientId(patientId);
+    }
     public Bill createBill(Bill bill){
         bill.setBillingDate(java.time.LocalDateTime.now());
         return billingRepository.save(bill);
