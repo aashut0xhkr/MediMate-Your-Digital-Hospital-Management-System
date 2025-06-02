@@ -2,7 +2,7 @@ package com.Major.Project.Appointment.Entity;
 
 import com.Major.Project.Doctor.Entity.Doctor;
 import com.Major.Project.Patient.Entity.Patient;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,12 +21,12 @@ public class Appointment {
     private String status;
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    @JsonBackReference(value = "patient-appointments")
+    @JsonIgnoreProperties("appointments")
     private Patient patient;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
-    @JsonBackReference(value = "doctor-appointments")
+    @JsonIgnoreProperties("appointments")
     private Doctor doctor;
 
 }
