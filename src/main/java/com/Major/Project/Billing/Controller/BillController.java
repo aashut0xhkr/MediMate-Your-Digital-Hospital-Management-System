@@ -23,7 +23,7 @@ public class BillController {
         Bill bill = billService.getBillById(id);;
         return bill != null ? ResponseEntity.ok(bill) : ResponseEntity.notFound().build();
     }
-    @GetMapping("/Patient")
+    @GetMapping("/{patientId}")
     public List<Bill> getBillByPatientID(@PathVariable Patient patientId){
         return billService.getBillByPatient(patientId);
     }
