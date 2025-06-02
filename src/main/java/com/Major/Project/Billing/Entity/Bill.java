@@ -9,11 +9,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +22,8 @@ public class Bill {
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    @JsonIgnoreProperties("patient")
-    private Patient patientId;
+    @JsonIgnoreProperties("billings")
+    private Patient patient;
 //    @ManyToOne
 //    @JoinColumn(name = "staff_id")
 //    private Staff handledBy;
