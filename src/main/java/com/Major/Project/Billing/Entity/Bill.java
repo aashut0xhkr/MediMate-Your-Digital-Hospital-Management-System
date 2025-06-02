@@ -1,7 +1,7 @@
 package com.Major.Project.Billing.Entity;
 
 import com.Major.Project.Patient.Entity.Patient;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,9 +23,10 @@ public class Bill {
     private LocalDateTime billingDate;
     private String paymentStatus;
 
-//    @ManyToOne
-//    @JoinColumn(name = "patient_id")
-//    private Patient patientId;
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    @JsonIgnoreProperties("patient")
+    private Patient patientId;
 //    @ManyToOne
 //    @JoinColumn(name = "staff_id")
 //    private Staff handledBy;

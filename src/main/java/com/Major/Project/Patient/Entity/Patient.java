@@ -2,7 +2,7 @@ package com.Major.Project.Patient.Entity;
 
 import com.Major.Project.Appointment.Entity.Appointment;
 import com.Major.Project.Billing.Entity.Bill;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,12 +23,12 @@ public class Patient {
     private String contact;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "patient-appointments")
+    @JsonIgnoreProperties("patient")
     private List<Appointment> appointments;
 
-//    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-//    @JsonManagedReference(value = "patient-billings")
-//    private List<Bill> billings;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("patient")
+    private List<Bill> billings;
 
 //    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
 //    private List<LabTest> laboratoryTests;
