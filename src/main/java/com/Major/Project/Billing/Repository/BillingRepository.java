@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface BillingRepository extends JpaRepository<Bill,Long> {
-    List<Bill> findByPatientId(Patient patientId);
+    List<Bill> findByPatient(Patient patient);
 }

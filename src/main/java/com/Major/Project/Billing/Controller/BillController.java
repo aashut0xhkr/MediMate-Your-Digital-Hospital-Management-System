@@ -23,8 +23,8 @@ public class BillController {
         Bill bill = billService.getBillById(id);;
         return bill != null ? ResponseEntity.ok(bill) : ResponseEntity.notFound().build();
     }
-    @GetMapping("/{patientId}")
-    public List<Bill> getBillByPatientID(@PathVariable Patient patientId){
+    @GetMapping("/Patient/{patientId}")
+    public List<Bill> getBillByPatientID(@PathVariable Long patientId){
         return billService.getBillByPatient(patientId);
     }
     @PostMapping
