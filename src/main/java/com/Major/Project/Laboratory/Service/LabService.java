@@ -2,6 +2,7 @@ package com.Major.Project.Laboratory.Service;
 
 import com.Major.Project.Laboratory.Entity.LabTest;
 import com.Major.Project.Laboratory.LabRepository.LabRepository;
+import com.Major.Project.Patient.Entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,8 @@ public class LabService {
     public LabTest getLabTestByID(Long id){
         return labRepository.findById(id).orElse(null);
     }
-    public List<LabTest> getByPatientID(Long patientId){
-        return labRepository.findByPatientId(patientId);
+    public List<LabTest> getByPatientID(Patient patientId){
+        return labRepository.findByPatient(patientId);
     }
     public List<LabTest> getByStatus(String status){
         return labRepository.findByStatus(status);
