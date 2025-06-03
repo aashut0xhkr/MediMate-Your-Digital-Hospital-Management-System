@@ -24,8 +24,8 @@ public class LabController {
         return labService.getLabTestByID(id);
     }
     @GetMapping("/patient/{patientId}")
-    public List<LabTest> getByPatientID(@PathVariable Patient patientId){
-        return labService.getByPatientID(patientId);
+    public List<LabTest> getByPatientID(@PathVariable Long patientId){
+        return labService.getByPatientId(patientId);
     }
     @GetMapping("/status/{status}")
     public List<LabTest> getByStatus(@PathVariable String status){
@@ -43,6 +43,6 @@ public class LabController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLabtest(@PathVariable Long id){
         labService.deleteLabTest(id);
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
 }

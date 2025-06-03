@@ -24,7 +24,7 @@ public class LabTest {
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    @JsonIgnoreProperties("laboratory")
+    @JsonIgnoreProperties("laboratoryTests")
     private Patient patient;
 //
 //    @ManyToOne
