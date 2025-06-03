@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface LabRepository extends JpaRepository<LabTest,Long> {
-    List<LabTest> findByPatient(Patient patientId);
+    List<LabTest> findByPatient(Patient patient);
     List<LabTest> findByStatus(String status);
 }

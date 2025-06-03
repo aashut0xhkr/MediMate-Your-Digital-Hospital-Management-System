@@ -1,8 +1,10 @@
 package com.Major.Project.Laboratory.Service;
 
+import com.Major.Project.Configuration.CustomException;
 import com.Major.Project.Laboratory.Entity.LabTest;
 import com.Major.Project.Laboratory.LabRepository.LabRepository;
 import com.Major.Project.Patient.Entity.Patient;
+import com.Major.Project.Patient.Repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,19 +16,28 @@ public class LabService {
     @Autowired
     private LabRepository labRepository;
 
+    @Autowired
+    private PatientRepository patientRepository;
+
     public List<LabTest> getAllLabTest(){
         return labRepository.findAll();
     }
     public LabTest getLabTestByID(Long id){
-        return labRepository.findById(id).orElse(null);
+        return labRepository.findById(id).orElseThrow(()->new CustomException("Lab test not found"));
     }
-    public List<LabTest> getByPatientID(Patient patientId){
-        return labRepository.findByPatient(patientId);
+    public List<LabTest> getByPatientId(Long patientId) {
+        Patient patient = patientRepository.findById(patientId).orElseThrow(()->new CustomException("Lab test not found"));
+        return patient != null ? labRepository.findByPatient(patient) : List.of();
     }
     public List<LabTest> getByStatus(String status){
         return labRepository.findByStatus(status);
     }
-    public LabTest createLabTest(LabTest labTest){
+    public LabTest createLabTest(LabTest labTest) {
+        if (labTest.getPatient() != null && labTest.getPatient().getPatientId() != null) {
+            Patient fullPatient = patientRepository.findById(labTest.getPatient().getPatientId())
+                    .orElseThrow(()->new CustomException("Lab test not found"));
+            labTest.setPatient(fullPatient);
+        }
         return labRepository.save(labTest);
     }
     public LabTest UpdateLabTest(Long id,LabTest labTest){
