@@ -22,7 +22,7 @@ public class Staff {
     private String email;
     private String status;
 
-//    @OneToMany(mappedBy = "managedBy", cascade = CascadeType.ALL)
-//    @JsonIgnoreProperties("managedBy")
-//    private List<Inventory> inventory;
+    @OneToMany(mappedBy = "managedBy", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("managedBy")
+    private List<Inventory> inventory;
 }
