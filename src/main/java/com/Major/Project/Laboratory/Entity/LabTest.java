@@ -1,7 +1,7 @@
 package com.Major.Project.Laboratory.Entity;
 
 import com.Major.Project.Patient.Entity.Patient;
-//import com.Major.Project.Staff.Entity.Staff;
+import com.Major.Project.Staff.Entity.Staff;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,8 +26,8 @@ public class LabTest {
     @JoinColumn(name = "patient_id")
     @JsonIgnoreProperties("laboratoryTests")
     private Patient patient;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "staff_id")
-//    private Staff labTechnician;
+
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    private Staff labTechnician;
 }

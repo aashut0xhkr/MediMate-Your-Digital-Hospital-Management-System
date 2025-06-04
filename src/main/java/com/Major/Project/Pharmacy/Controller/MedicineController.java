@@ -31,8 +31,8 @@ public class MedicineController {
         return medicineService.getByStatus(status);
     }
 
-    @GetMapping("/search")
-    public List<Medicine> searchByName(@RequestParam String name) {
+    @GetMapping("/search/{name}")
+    public List<Medicine> searchByName(@PathVariable String name) {
         return medicineService.searchByName(name);
     }
 

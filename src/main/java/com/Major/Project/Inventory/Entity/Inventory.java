@@ -24,8 +24,8 @@ public class Inventory {
     private String supplier;
     private String status;
 
-//    @ManyToOne
-//    @JoinColumn(name = "staff_id")
-//    @JsonIgnoreProperties("inventory")
-//    private Staff managedBy;
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    @JsonIgnoreProperties("inventory")
+    private Staff managedBy;
 }

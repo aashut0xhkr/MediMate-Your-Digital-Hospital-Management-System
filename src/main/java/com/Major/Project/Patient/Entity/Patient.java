@@ -3,6 +3,7 @@ package com.Major.Project.Patient.Entity;
 import com.Major.Project.Appointment.Entity.Appointment;
 import com.Major.Project.Billing.Entity.Bill;
 import com.Major.Project.Laboratory.Entity.LabTest;
+import com.Major.Project.Pharmacy.Entity.Medicine;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +11,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name="Patient")
+@Table
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,7 +36,8 @@ public class Patient {
     @JsonIgnoreProperties("patient")
     private List<LabTest> laboratoryTests;
 
-//    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-//    private List<Medicine> pharmacyOrders;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("patient")
+    private List<Medicine> pharmacyOrders;
 
 }
