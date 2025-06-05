@@ -2,9 +2,7 @@ package com.Major.Project.Doctor.Entity;
 
 import com.Major.Project.Appointment.Entity.Appointment;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.List;
