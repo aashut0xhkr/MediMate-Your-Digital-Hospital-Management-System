@@ -2,6 +2,7 @@ package com.Major.Project.Billing.Controller;
 
 import com.Major.Project.Billing.Entity.Bill;
 import com.Major.Project.Billing.Service.BillService;
+import com.Major.Project.Patient.Entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,35 +10,35 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/HMS")
+@RequestMapping("/HMS/Bill")
 public class BillController {
     @Autowired
     private BillService billService;
-    @GetMapping("/bill")
+    @GetMapping
     public List<Bill> getAllBill(){
         return billService.getAllBill();
     }
-    @GetMapping("/bill/{id}")
-    public ResponseEntity<Bill> getBillById(@PathVariable Long billID){
-        Bill bill = billService.getBillById(billID);;
+    @GetMapping("/{id}")
+    public ResponseEntity<Bill> getBillById(@PathVariable Long id){
+        Bill bill = billService.getBillById(id);;
         return bill != null ? ResponseEntity.ok(bill) : ResponseEntity.notFound().build();
     }
-//    @GetMapping("/Patientsss/{id}")
-//    public List<Bill> getBillByPatientID(@PathVariable Long patientId){
-//        return billService.getBillByPatientId(patientId);
-//    }
-    @PostMapping("/bill")
+    @GetMapping("/Patient/{patientId}")
+    public List<Bill> getBillByPatientID(@PathVariable Long patientId){
+        return billService.getBillByPatient(patientId);
+    }
+    @PostMapping
     public Bill CreateBill(@RequestBody Bill bill){
         return billService.createBill(bill);
     }
-    @PutMapping("/bill/{id}")
-    public ResponseEntity<Bill> updateBill(@PathVariable Long billID,@RequestBody Bill bill){
-      Bill updated=  billService.UpdateBill(billID,bill);
+    @PutMapping("/{id}")
+    public ResponseEntity<Bill> updateBill(@PathVariable Long id,@RequestBody Bill bill){
+      Bill updated=  billService.UpdateBill(id,bill);
        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
-    @DeleteMapping("/bill/{id}")
-    public ResponseEntity<Void> deleteBill(@PathVariable Long billID){
-       billService.deleteBill(billID);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteBill(@PathVariable Long id){
+       billService.deleteBill(id);
         return ResponseEntity.noContent().build();
     }
 }

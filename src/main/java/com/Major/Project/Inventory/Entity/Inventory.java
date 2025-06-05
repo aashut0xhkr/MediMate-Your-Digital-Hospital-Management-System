@@ -1,6 +1,7 @@
 package com.Major.Project.Inventory.Entity;
 
 import com.Major.Project.Staff.Entity.Staff;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -23,7 +24,8 @@ public class Inventory {
     private String supplier;
     private String status;
 
-//    @ManyToOne
-//    @JoinColumn(name = "staff_id")
-//    private Staff managedBy;
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    @JsonIgnoreProperties("inventory")
+    private Staff managedBy;
 }

@@ -1,5 +1,6 @@
 package com.Major.Project.Inventory.Service;
 
+import com.Major.Project.Configuration.CustomException;
 import com.Major.Project.Inventory.Entity.Inventory;
 import com.Major.Project.Inventory.Repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class InventoryService {
     public List<Inventory> getAllItems(){
         return inventoryRepository.findAll();
     }
-    public Inventory getAllItemsById(Long inventoryId){
-        return inventoryRepository.findById(inventoryId).orElse(null);
+    public Inventory getItemsById(Long inventoryId){
+        return inventoryRepository.findById(inventoryId).orElseThrow(()->new CustomException("Item Not Found"));
     }
     public List<Inventory> getItemByStatus(String status){
         return inventoryRepository.findByStatus(status);
@@ -32,7 +33,7 @@ public class InventoryService {
         inventoryRepository.deleteById(inventoryId);
     }
     public Inventory updateItem(Long inventoryId,Inventory inventory){
-        Inventory allItemsById = getAllItemsById(inventoryId);
+        Inventory allItemsById = getItemsById(inventoryId);
         if(allItemsById==null) return null;
         allItemsById.setName(inventory.getName());
         allItemsById.setName(inventory.getName());

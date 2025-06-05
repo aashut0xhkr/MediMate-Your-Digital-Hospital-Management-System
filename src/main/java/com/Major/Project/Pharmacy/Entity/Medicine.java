@@ -3,6 +3,7 @@ package com.Major.Project.Pharmacy.Entity;
 
 import com.Major.Project.Patient.Entity.Patient;
 import com.Major.Project.Staff.Entity.Staff;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,13 +26,14 @@ public class Medicine {
     private LocalDate expiryDate;
     private String status;
 
-//    @ManyToOne
-//    @JoinColumn(name = "patient_id")
-//    private Patient patient;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "staff_id")
-//    private Staff pharmacist;
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    @JsonIgnoreProperties("medicine")
+    private Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    private Staff pharmacist;
 
 }
 

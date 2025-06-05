@@ -2,6 +2,7 @@ package com.Major.Project.Laboratory.Controller;
 
 import com.Major.Project.Laboratory.Entity.LabTest;
 import com.Major.Project.Laboratory.Service.LabService;
+import com.Major.Project.Patient.Entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class LabController {
     }
     @GetMapping("/patient/{patientId}")
     public List<LabTest> getByPatientID(@PathVariable Long patientId){
-        return labService.getByPatientID(patientId);
+        return labService.getByPatientId(patientId);
     }
     @GetMapping("/status/{status}")
     public List<LabTest> getByStatus(@PathVariable String status){
@@ -42,6 +43,6 @@ public class LabController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLabtest(@PathVariable Long id){
         labService.deleteLabTest(id);
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
 }
