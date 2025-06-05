@@ -25,4 +25,6 @@ public class Staff {
     @OneToMany(mappedBy = "managedBy", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("managedBy")
     private List<Inventory> inventory;
+
+
 }

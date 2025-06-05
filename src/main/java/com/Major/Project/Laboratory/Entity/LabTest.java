@@ -8,11 +8,9 @@ import lombok.*;
 
 import java.time.LocalDate;
 @Entity
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class LabTest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,5 +27,6 @@ public class LabTest {
 
     @ManyToOne
     @JoinColumn(name = "staff_id")
+    @JsonIgnoreProperties("laboratoryTests")
     private Staff labTechnician;
 }
