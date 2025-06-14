@@ -13,5 +13,5 @@ spring:
 
   security:
     user:
-      name: user         # set your desired username
-      password: ashu123  # set your desired password
+      name: user
+      password: user123
