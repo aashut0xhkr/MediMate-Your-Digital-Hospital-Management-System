@@ -25,7 +25,7 @@ public class LabService {
         return labRepository.findById(id).orElseThrow(()->new CustomException("Lab test not found"));
     }
     public List<LabTest> getByPatientId(Long patientId) {
-        Patient patient = patientRepository.findById(patientId).orElseThrow(()->new CustomException("Lab test not found"));
+        Patient patient = patientRepository.findById(patientId).orElseThrow(()->new CustomException("Patient not found with ID: " + patientId));
         return patient != null ? labRepository.findByPatient(patient) : List.of();
     }
     public List<LabTest> getByStatus(String status){
@@ -34,14 +34,13 @@ public class LabService {
     public LabTest createLabTest(LabTest labTest) {
         if (labTest.getPatient() != null && labTest.getPatient().getPatientId() != null) {
             Patient fullPatient = patientRepository.findById(labTest.getPatient().getPatientId())
-                    .orElseThrow(()->new CustomException("Lab test not found"));
+                    .orElseThrow(()->new CustomException("Patient not found with ID: " + labTest.getPatient().getPatientId() + " while creating lab test"));
             labTest.setPatient(fullPatient);
         }
         return labRepository.save(labTest);
     }
     public LabTest UpdateLabTest(Long id,LabTest labTest){
         LabTest byId = getLabTestByID(id);
-        if(byId==null) return null;
         byId.setTestName(labTest.getTestName());
         byId.setResult(labTest.getResult());
         byId.setTestDate(labTest.getTestDate());

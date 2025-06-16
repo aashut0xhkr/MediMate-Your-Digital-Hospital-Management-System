@@ -2,7 +2,6 @@ package com.Major.Project.Laboratory.Controller;
 
 import com.Major.Project.Laboratory.Entity.LabTest;
 import com.Major.Project.Laboratory.Service.LabService;
-import com.Major.Project.Patient.Entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
