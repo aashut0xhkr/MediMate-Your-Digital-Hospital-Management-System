@@ -28,7 +28,7 @@ public class AppointmentService {
         return appointmentRepo.findAll();
     }
     public Appointment getAppointmentById(Long appointmentId){
-        return appointmentRepo.findById(appointmentId).orElseThrow(()-> new CustomException("id not find"));
+        return appointmentRepo.findById(appointmentId).orElseThrow(()-> new CustomException("Appointment not found with ID: " + appointmentId));
     }
     public List<Appointment> findByDoctorId(Long DocId){
         return appointmentRepo.findByDoctor_DocId(DocId);
@@ -51,9 +51,9 @@ public class AppointmentService {
         Long docId = appointment.getDoctor().getDocId();
 
         Patient patient = patientRepository.findById(patientId)
-                .orElseThrow(() -> new CustomException("Patient not found"));
+                .orElseThrow(() -> new CustomException("Patient not found with ID: " + patientId + " while creating appointment"));
         Doctor doctor = doctorRepository.findById(docId)
-                .orElseThrow(() -> new CustomException("Doctor not found"));
+                .orElseThrow(() -> new CustomException("Doctor not found with ID: " + docId + " while creating appointment"));
 
         appointment.setPatient(patient);
         appointment.setDoctor(doctor);
@@ -64,7 +64,6 @@ public class AppointmentService {
 
     public Appointment updateAppointment(Long appointmentId,Appointment appointment){
             Appointment appointmentById = getAppointmentById(appointmentId);
-            if(appointmentById == null) return null;
 
             Long patientId = appointment.getPatient().getPatientId();
             Long doctorId = appointment.getDoctor().getDocId();
