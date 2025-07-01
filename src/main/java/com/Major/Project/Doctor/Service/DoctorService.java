@@ -24,6 +24,7 @@ public class DoctorService {
     }
 
     public void DeleteDoctor(Long id){
+
         doctorRepository.deleteById(id);
     }
     public Doctor updateDoctor(Long id,Doctor updatedDoctor){
