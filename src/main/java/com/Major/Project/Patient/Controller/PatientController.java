@@ -21,6 +21,7 @@ public class PatientController {
     public Patient getPatientByid(@PathVariable Long id){
         return patientService.getPatientListById(id);
     }
+
     @PostMapping
     public Patient savePatient(@RequestBody Patient patient){
         return patientService.createPatient(patient);
