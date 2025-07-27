@@ -30,18 +30,26 @@
 ```
 HMS_PRJCT
 ├── src
-│   ├── main
-│   │   ├── java/com/medimate
-│   │   │   ├── controller       # REST Controllers for all modules
-│   │   │   ├── entity           # JPA Entities
-│   │   │   ├── repository       # Spring Data JPA Repositories
-│   │   │   ├── service          # Business Logic
-│   │   │   ├── config           # JWT, Security, CORS, etc.
-│   │   │   └── exception        # Global Exception Handling
-│   │   └── resources
-│   │       ├── application.properties
-│   │       └── static/templates # (if applicable)
-├── pom.xml
+│   └── main
+│       ├── java/com/Major/Project
+│       │   ├── Appointment       # Appointment booking and scheduling
+│       │   ├── Billing           # Billing module (invoices, payments)
+│       │   ├── Configuration     # JWT, security, and app configs
+│       │   ├── Doctor            # Doctor registration and management
+│       │   ├── Inventory         # Medical stock management
+│       │   ├── Laboratory        # Lab test ordering and results
+│       │   ├── Patient           # Patient profile and records
+│       │   ├── Pharmacy          # Medicine and pharmacy-related logic
+│       │   ├── Reporting         # Admin dashboards and report generation
+│       │   ├── Security          # Spring Security and JWT auth
+│       │   └── Staff             # Hospital staff HR module
+│       │
+│       └── resources
+│           ├── application.yml   # Configuration file
+│           ├── static            # Static resources (if any)
+│           └── templates         # Thymeleaf or other templates
+│
+├── pom.xml                       # Maven configuration
 └── README.md
 ```
 
@@ -69,12 +77,24 @@ cd HMS_PRJCT
 
 2. **Configure database:**
 
-Update `application.properties` with your DB credentials:
+Update `application.yml` with your DB credentials:
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/medimate
-spring.datasource.username=root
-spring.datasource.password=your_password
+```yaml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/hospitalManagement
+    username: root
+    password: 8207
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+  security:
+    user:
+      name: user
+      password: user123
 ```
 
 3. **Run the application:**
@@ -137,7 +157,6 @@ We welcome contributions to improve MediMate! 🛠️
 
 ---
 
----
 
 ## ❤️ Contributors
 
