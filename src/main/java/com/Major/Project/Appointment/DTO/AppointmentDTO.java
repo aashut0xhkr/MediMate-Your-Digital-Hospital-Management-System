@@ -14,7 +14,7 @@ public class AppointmentDTO {
     private Long appointmentID;
     private LocalDateTime appointmentTime;
     private String status;
-    private String pateitntName;
+    private String patientName;
     private String doctorName;
 
 }

@@ -99,7 +99,7 @@ public class AppointmentService {
         appointmentDTO.setAppointmentID(appointment.getAppointmentId());
         appointmentDTO.setAppointmentTime(appointment.getAppointmentTime());
         appointmentDTO.setStatus(appointment.getStatus());
-        appointmentDTO.setPateitntName(appointment.getPatient().getName());
+        appointmentDTO.setPatientName(appointment.getPatient().getName());
         appointmentDTO.setDoctorName(appointment.getDoctor().getName());
         return appointmentDTO;
     }
