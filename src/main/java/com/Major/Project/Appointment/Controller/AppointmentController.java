@@ -1,5 +1,6 @@
 package com.Major.Project.Appointment.Controller;
 
+import com.Major.Project.Appointment.DTO.AppointmentDTO;
 import com.Major.Project.Appointment.Entity.Appointment;
 import com.Major.Project.Appointment.Service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,34 +17,34 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
     @GetMapping
-    public List<Appointment> getAllAppointment(){
+    public List<AppointmentDTO> getAllAppointment(){
         return appointmentService.getAppointments();
     }
     @GetMapping("/{id}")
-    public Appointment getAppointmentById(@PathVariable Long id){
+    public AppointmentDTO getAppointmentById(@PathVariable Long id){
         return appointmentService.getAppointmentById(id);
     }
     @PostMapping
-    public Appointment createAppointment(@RequestBody Appointment appointment){
-        return appointmentService.CreateAppointment(appointment);
+    public AppointmentDTO createAppointment(@RequestBody Appointment appointment){
+        return appointmentService.createAppointment(appointment);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> DeleteAppointment(@PathVariable Long id){
-        appointmentService.DeleteAppointment(id);
+        appointmentService.deleteAppointment(id);
         return ResponseEntity.noContent().build();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Appointment> updateAppointment(@PathVariable Long id,@RequestBody Appointment appointment ){
-        Appointment updated = appointmentService.updateAppointment(id, appointment);
+    public ResponseEntity<AppointmentDTO> updateAppointment(@PathVariable Long id,@RequestBody Appointment appointment ){
+        AppointmentDTO updated = appointmentService.updateAppointment(id, appointment);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
     @GetMapping("/doctor/{doctorId}")
-    public List<Appointment> getByDoctor(@PathVariable Long doctorId) {
+    public List<AppointmentDTO> getByDoctor(@PathVariable Long doctorId) {
         return appointmentService.findByDoctorId(doctorId);
     }
 
     @GetMapping("/patient/{patientId}")
-    public List<Appointment> getByPatient(@PathVariable Long patientId) {
+    public List<AppointmentDTO> getByPatient(@PathVariable Long patientId) {
         return appointmentService.findByPatientId(patientId);
     }
 
