@@ -19,4 +19,5 @@ public class BillDTO {
     private Long patientID;
     private Long staffId;
 
+
 }
