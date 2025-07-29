@@ -4,6 +4,7 @@ import com.Major.Project.Configuration.CustomException;
 import com.Major.Project.Inventory.DTO.InventoryDTO;
 import com.Major.Project.Inventory.Entity.Inventory;
 import com.Major.Project.Inventory.Repository.InventoryRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,6 +77,8 @@ public class InventoryService {
         inventoryDTO.setStaffId(inventory.getManagedBy().getId());
         return inventoryDTO;
     }
+
+
 
 
 }
