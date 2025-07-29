@@ -1,6 +1,7 @@
 package com.Major.Project.Inventory.Service;
 
 import com.Major.Project.Configuration.CustomException;
+import com.Major.Project.Inventory.DTO.InventoryDTO;
 import com.Major.Project.Inventory.Entity.Inventory;
 import com.Major.Project.Inventory.Repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,40 +9,72 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class InventoryService {
     @Autowired
     private InventoryRepository inventoryRepository;
 
-    public List<Inventory> getAllItems(){
-        return inventoryRepository.findAll();
+    public List<InventoryDTO> getAllItems(){
+        return inventoryRepository.findAll()
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
-    public Inventory getItemsById(Long inventoryId){
-        return inventoryRepository.findById(inventoryId).orElseThrow(()->new CustomException("Item Not Found"));
-    }
-    public List<Inventory> getItemByStatus(String status){
-        return inventoryRepository.findByStatus(status);
-    }
-    public List<Inventory> getItemByCategory(String category){
-        return inventoryRepository.findByCategory(category);}
 
-    public Inventory createItem(Inventory inventory){
-        return inventoryRepository.save(inventory);
+    public InventoryDTO getItemsById(Long inventoryId){
+        Inventory item = inventoryRepository.findById(inventoryId)
+                .orElseThrow(() -> new CustomException("Item Not Found"));
+        return convertToDto(item);
+    }
+    public List<InventoryDTO> getItemByStatus(String status){
+        return inventoryRepository.findByStatus(status)
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+    public List<InventoryDTO> getItemByCategory(String category){
+        return inventoryRepository.findByCategory(category)
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    public InventoryDTO createItem(Inventory inventory){
+        Inventory saved = inventoryRepository.save(inventory);
+        return convertToDto(saved);
     }
     public void deleteItem(Long inventoryId){
         inventoryRepository.deleteById(inventoryId);
     }
-    public Inventory updateItem(Long inventoryId,Inventory inventory){
-        Inventory allItemsById = getItemsById(inventoryId);
-        if(allItemsById==null) return null;
-        allItemsById.setName(inventory.getName());
-        allItemsById.setName(inventory.getName());
-        allItemsById.setCategory(inventory.getCategory());
-        allItemsById.setQuantity(inventory.getQuantity());
-        allItemsById.setSupplier(inventory.getSupplier());
-        allItemsById.setStatus(inventory.getStatus());
-        return inventoryRepository.save(allItemsById);
+    public InventoryDTO updateItem(Long inventoryId, Inventory incoming){
+        // Fetch entity (not DTO) from DB
+        Inventory existing = inventoryRepository.findById(inventoryId)
+                .orElseThrow(() -> new CustomException("Item Not Found"));
+
+        // Copy incoming fields onto the entity
+        existing.setName(incoming.getName());
+        existing.setCategory(incoming.getCategory());
+        existing.setQuantity(incoming.getQuantity());
+        existing.setSupplier(incoming.getSupplier());
+        existing.setStatus(incoming.getStatus());
+
+        // Persist entity, then convert to DTO for the response
+        Inventory updated = inventoryRepository.save(existing);
+        return convertToDto(updated);
+    }
+
+    private InventoryDTO convertToDto(Inventory inventory){
+        InventoryDTO inventoryDTO=new InventoryDTO();
+        inventoryDTO.setInventoryID(inventory.getInventoryId());
+        inventoryDTO.setName(inventory.getName());
+        inventoryDTO.setCategory(inventory.getCategory());
+        inventoryDTO.setQuantity(inventory.getQuantity());
+        inventoryDTO.setSupplier(inventory.getSupplier());
+        inventoryDTO.setStatus(inventory.getStatus());
+        inventoryDTO.setStaffId(inventory.getManagedBy().getId());
+        return inventoryDTO;
     }
 
 
