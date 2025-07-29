@@ -29,9 +29,7 @@ public class DoctorController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<DoctorDTO> updateDoctor(@PathVariable Long id,@RequestBody Doctor doctor){
-        System.out.println("Received doctor: " + doctor);
-        System.out.println("Name: " + doctor.getName());
-        System.out.println("Specialisation: " + doctor.getSpecialisation());
+
         DoctorDTO updated = doctorService.updateDoctor(id, doctor);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
