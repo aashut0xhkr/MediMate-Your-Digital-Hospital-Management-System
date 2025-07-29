@@ -1,5 +1,6 @@
 package com.Major.Project.Billing.Service;
 
+import com.Major.Project.Billing.DTO.BillDTO;
 import com.Major.Project.Billing.Entity.Bill;
 import com.Major.Project.Billing.Repository.BillingRepository;
 import com.Major.Project.Configuration.CustomException;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BillService {
@@ -18,32 +20,39 @@ public class BillService {
     @Autowired
     private PatientRepository patientRepository;
 
-    public List<Bill> getAllBill(){
-        return billingRepository.findAll();
+    public List<BillDTO> getAllBill() {
+        List<Bill> bills = billingRepository.findAll();
+        return bills.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
-    public Bill getBillById(Long billId){
-        return billingRepository.findById(billId).orElseThrow(()->new CustomException("Bill Not Found"));
+
+    public BillDTO getBillById(Long billId) {
+        Bill bill = billingRepository.findById(billId)
+                .orElseThrow(() -> new CustomException("Bill Not Found"));
+        return convertToDto(bill);
     }
 
-    public List<Bill> getBillByPatient(Long patientId){
-        Patient patient = patientRepository.findById(patientId).orElseThrow(()->new CustomException("id not found"));
-        return billingRepository.findByPatient(patient);
+    public List<BillDTO> getBillByPatient(Long patientId) {
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new CustomException("id not found"));
+        List<Bill> bills = billingRepository.findByPatient(patient);
+        return bills.stream().map(this::convertToDto).collect(Collectors.toList());
     }
-    public Bill createBill(Bill bill){
+    public BillDTO createBill(Bill bill) {
         Long patientId = bill.getPatient().getPatientId();
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new CustomException("Patient ID not found"));
         bill.setPatient(patient);
         bill.setBillingDate(java.time.LocalDateTime.now());
-        return billingRepository.save(bill);
+        Bill savedBill = billingRepository.save(bill);
+        return convertToDto(savedBill);
     }
     public void deleteBill(Long  billID){
          billingRepository.deleteById(billID);
     }
-    public Bill UpdateBill(Long billID, Bill bill){
-        Bill existing = getBillById(billID);
-        if(existing == null) return null;
+    public BillDTO UpdateBill(Long billID, Bill bill) {
+        Bill existing = billingRepository.findById(billID)
+                .orElseThrow(() -> new CustomException("Bill Not Found"));
 
         existing.setAmount(bill.getAmount());
         existing.setDescription(bill.getDescription());
@@ -55,7 +64,23 @@ public class BillService {
             existing.setPatient(patient);
         }
 
-        return billingRepository.save(existing);
+        Bill updatedBill = billingRepository.save(existing);
+        return convertToDto(updatedBill);
+    }
+
+
+    private BillDTO convertToDto(Bill bill) {
+        BillDTO billDTO = new BillDTO();
+        billDTO.setBillID(bill.getBillID());
+        billDTO.setAmount(bill.getAmount());
+        billDTO.setDescription(bill.getDescription());
+        billDTO.setBillingDate(bill.getBillingDate());
+        billDTO.setPatientID(bill.getPatient().getPatientId());
+        billDTO.setStaffId(bill.getHandledBy().getId());
+
+        return billDTO;
+
+
     }
 
 }
