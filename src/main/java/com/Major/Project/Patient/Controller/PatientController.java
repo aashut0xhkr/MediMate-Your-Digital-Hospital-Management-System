@@ -1,5 +1,6 @@
 package com.Major.Project.Patient.Controller;
 
+import com.Major.Project.Patient.DTO.PatientDTO;
 import com.Major.Project.Patient.Entity.Patient;
 import com.Major.Project.Patient.Service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +15,16 @@ public class PatientController {
     private PatientService patientService;
 
     @GetMapping
-    public List<Patient> getPatient(){
+    public List<PatientDTO> getPatient(){
         return patientService.getPatientList();
     }
     @GetMapping("/{id}")
-    public Patient getPatientByid(@PathVariable Long id){
+    public PatientDTO getPatientByid(@PathVariable Long id){
         return patientService.getPatientListById(id);
     }
 
     @PostMapping
-    public Patient savePatient(@RequestBody Patient patient){
+    public PatientDTO savePatient(@RequestBody Patient patient){
         return patientService.createPatient(patient);
     }
     @DeleteMapping("/{id}")
@@ -33,8 +34,8 @@ public class PatientController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Patient> updatePatient(@PathVariable Long id,@RequestBody Patient patient){
-        Patient p=patientService.updatePatient(id,patient);
+    public ResponseEntity<PatientDTO> updatePatient(@PathVariable Long id,@RequestBody Patient patient){
+        PatientDTO p=patientService.updatePatient(id,patient);
         return p!= null ? ResponseEntity.ok(p) : ResponseEntity.notFound().build();
     }
 }
