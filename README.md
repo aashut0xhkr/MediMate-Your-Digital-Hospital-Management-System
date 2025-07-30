@@ -160,9 +160,9 @@ We welcome contributions to improve MediMate! 🛠️
 
 ## ❤️ Contributors
 
-Thanks to all contributors who make this project possible!
+Thanks to all contributors who make this project possible!  
+[![Contributors](https://contrib.rocks/image?repo=aashut0xhkr/HMS_PRJCT&max=100)](https://github.com/aashut0xhkr/HMS_PRJCT/graphs/contributors)
 
-[![Contributors](https://contrib.rocks/image?repo=aashut0xhkr/HMS_PRJCT)](https://github.com/aashut0xhkr/HMS_PRJCT/graphs/contributors)
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="600">
