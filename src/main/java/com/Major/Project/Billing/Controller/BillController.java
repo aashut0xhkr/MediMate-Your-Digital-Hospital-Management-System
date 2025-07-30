@@ -1,8 +1,8 @@
 package com.Major.Project.Billing.Controller;
 
+import com.Major.Project.Billing.DTO.BillDTO;
 import com.Major.Project.Billing.Entity.Bill;
 import com.Major.Project.Billing.Service.BillService;
-import com.Major.Project.Patient.Entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,25 +15,25 @@ public class BillController {
     @Autowired
     private BillService billService;
     @GetMapping
-    public List<Bill> getAllBill(){
+    public List<BillDTO> getAllBill(){
         return billService.getAllBill();
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Bill> getBillById(@PathVariable Long id){
-        Bill bill = billService.getBillById(id);;
+    public ResponseEntity<BillDTO> getBillById(@PathVariable Long id){
+        BillDTO bill = billService.getBillById(id);;
         return bill != null ? ResponseEntity.ok(bill) : ResponseEntity.notFound().build();
     }
     @GetMapping("/Patient/{patientId}")
-    public List<Bill> getBillByPatientID(@PathVariable Long patientId){
+    public List<BillDTO> getBillByPatientID(@PathVariable Long patientId){
         return billService.getBillByPatient(patientId);
     }
     @PostMapping
-    public Bill CreateBill(@RequestBody Bill bill){
+    public BillDTO CreateBill(@RequestBody Bill bill){
         return billService.createBill(bill);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Bill> updateBill(@PathVariable Long id,@RequestBody Bill bill){
-      Bill updated=  billService.UpdateBill(id,bill);
+    public ResponseEntity<BillDTO> updateBill(@PathVariable Long id,@RequestBody Bill bill){
+      BillDTO updated=  billService.UpdateBill(id,bill);
        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
     @DeleteMapping("/{id}")

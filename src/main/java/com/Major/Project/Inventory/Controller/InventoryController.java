@@ -1,5 +1,6 @@
 package com.Major.Project.Inventory.Controller;
 
+import com.Major.Project.Inventory.DTO.InventoryDTO;
 import com.Major.Project.Inventory.Entity.Inventory;
 import com.Major.Project.Inventory.Service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,23 +16,23 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @GetMapping
-    public List<Inventory> getItems(){
+    public List<InventoryDTO> getItems(){
         return inventoryService.getAllItems();
     }
     @GetMapping("/{inventoryId}")
-    public Inventory getItemsById(@PathVariable Long inventoryId){
+    public InventoryDTO getItemsById(@PathVariable Long inventoryId){
         return inventoryService.getItemsById(inventoryId);
     }
     @GetMapping("/status/{status}")
-    public List<Inventory> getItemsByStatus(@PathVariable String status){
+    public List<InventoryDTO> getItemsByStatus(@PathVariable String status){
         return inventoryService.getItemByStatus(status);
     }
     @GetMapping("/category/{category}")
-    public List<Inventory> getItemsByCategory(@PathVariable String category){
+    public List<InventoryDTO> getItemsByCategory(@PathVariable String category){
         return inventoryService.getItemByCategory(category);
     }
     @PostMapping
-    public Inventory createItems(@RequestBody Inventory inventory){
+    public InventoryDTO createItems(@RequestBody Inventory inventory){
         return inventoryService.createItem(inventory);
     }
     @DeleteMapping("/{inventoryId}")
@@ -40,8 +41,8 @@ public class InventoryController {
         return ResponseEntity.noContent().build();
     }
     @PutMapping("/{inventoryId}")
-    public ResponseEntity<Inventory> updateItems(@PathVariable Long inventoryId,@RequestBody Inventory inventory){
-       Inventory updated= inventoryService.updateItem(inventoryId,inventory);
+    public ResponseEntity<InventoryDTO> updateItems(@PathVariable Long inventoryId,@RequestBody Inventory inventory){
+       InventoryDTO updated= inventoryService.updateItem(inventoryId,inventory);
        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 }
