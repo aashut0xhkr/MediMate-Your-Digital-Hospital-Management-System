@@ -156,6 +156,9 @@ We welcome contributions to improve MediMate! 🛠️
 5. Submit a Pull Request
 
 ---
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## ❤️ Contributors
 
@@ -168,6 +171,3 @@ Thanks to all contributors who make this project possible!
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
