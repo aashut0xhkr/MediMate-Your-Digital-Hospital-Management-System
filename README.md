@@ -130,8 +130,8 @@ http://localhost:8080/api/v1/doctors
 
 ## 🔐 Authentication
 
-- JWT Token-based security
-- Login Endpoint: `/api/auth/login`
+- JWT Token-based security  
+- Login Endpoint: `/api/auth/login`  
 - Secure endpoints require `Authorization: Bearer <token>`
 
 ---
@@ -149,21 +149,49 @@ http://localhost:8080/api/v1/doctors
 
 We welcome contributions to improve MediMate! 🛠️
 
-1. Fork the repo
-2. Create your branch: `git checkout -b feature-name`
-3. Commit changes: `git commit -m "Add feature"`
-4. Push: `git push origin feature-name`
+1. Fork the repo  
+2. Create your branch: `git checkout -b feature-name`  
+3. Commit changes: `git commit -m "Add feature"`  
+4. Push: `git push origin feature-name`  
 5. Submit a Pull Request
 
 ---
-
 
 ## ❤️ Contributors
 
 Thanks to all contributors who make this project possible!  
 [![Contributors](https://contrib.rocks/image?repo=aashut0xhkr/HMS_PRJCT&max=100)](https://github.com/aashut0xhkr/HMS_PRJCT/graphs/contributors)
 
-
 <p align="center">
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="600">
 </p>
+
+---
+
+## 📄 License
+
+### MIT License
+
+```
+MIT License
+
+Copyright (c) 2025 Ashutosh Rajput
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+```
