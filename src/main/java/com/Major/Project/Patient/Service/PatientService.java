@@ -55,6 +55,7 @@ public class PatientService {
         patientDTO.setName(patient.getName());
         patientDTO.setAge(patient.getAge());
         patientDTO.setGender(patient.getGender());
+        patientDTO.setContact(patient.getContact());
         if(patient.getAppointments()!=null){
             patientDTO.setAppointmentIds(patient.getAppointments().stream()
                     .map(a->a.getAppointmentId())
