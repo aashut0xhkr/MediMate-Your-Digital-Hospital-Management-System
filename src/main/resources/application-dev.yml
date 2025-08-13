@@ -1,0 +1,7 @@
+spring:
+  sql:
+    init:
+      mode: always
+      platform: mysql
+  jpa:
+    defer-datasource-initialization: true
