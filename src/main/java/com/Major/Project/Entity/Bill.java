@@ -1,5 +1,7 @@
-package com.Major.Project.Entity;
+package com.Major.Project.Billing.Entity;
 
+import com.Major.Project.Patient.Entity.Patient;
+import com.Major.Project.Staff.Entity.Staff;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "bill_id")
     private Long billID;
     private Double amount;
     private String description;
