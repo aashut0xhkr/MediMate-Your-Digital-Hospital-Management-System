@@ -17,8 +17,6 @@ public class MedicineDTO {
     private int quantity;
     private LocalDate expiryDate;
     private String status;
-
-
     private Long patientId;
     private Long pharmacistId;
 }
