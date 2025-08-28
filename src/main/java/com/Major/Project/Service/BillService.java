@@ -72,7 +72,7 @@ public class BillService {
 
     private BillDTO convertToDto(Bill bill) {
         BillDTO billDTO = new BillDTO();
-        billDTO.setBillID(bill.getBillID());
+        billDTO.setBillID(bill.getBillId());
         billDTO.setAmount(bill.getAmount());
         billDTO.setDescription(bill.getDescription());
         billDTO.setBillingDate(bill.getBillingDate());

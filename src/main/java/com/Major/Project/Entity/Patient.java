@@ -1,7 +1,6 @@
 package com.Major.Project.Entity;
 
-import com.Major.Project.Entity.Appointment;
-import com.Major.Project.Entity.Bill;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;

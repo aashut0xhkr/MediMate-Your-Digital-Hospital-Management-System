@@ -65,7 +65,7 @@ public class PatientService {
             );
         }
         if(patient.getBillings()!=null){
-            patientDTO.setBillIds(patient.getBillings().stream().map(b->b.getBillID()).toList());
+            patientDTO.setBillIds(patient.getBillings().stream().map(b->b.getBillId()).toList());
 
         }
         if (patient.getLaboratoryTests() != null) {

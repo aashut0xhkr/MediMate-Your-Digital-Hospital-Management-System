@@ -1,10 +1,10 @@
 package com.Major.Project;
 
 import com.Major.Project.Configuration.CustomException;
-import com.Major.Project.Patient.DTO.PatientDTO;
-import com.Major.Project.Patient.Entity.Patient;
-import com.Major.Project.Patient.Repository.PatientRepository;
-import com.Major.Project.Patient.Service.PatientService;
+import com.Major.Project.DTO.PatientDTO;
+import com.Major.Project.Entity.Patient;
+import com.Major.Project.Repository.PatientRepository;
+import com.Major.Project.Service.PatientService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -104,9 +104,7 @@ class PatientServiceTest {
     @Test
     void testUpdatePatient_NotFound() {
         when(patientRepo.findById(99L)).thenReturn(Optional.empty());
-
         CustomException exception = assertThrows(CustomException.class, () -> patientService.updatePatient(99L, patient));
-
         assertEquals("ID Not Found", exception.getMessage());
         verify(patientRepo, times(1)).findById(99L);
     }
@@ -114,9 +112,7 @@ class PatientServiceTest {
     @Test
     void testDeletePatient() {
         doNothing().when(patientRepo).deleteById(1L);
-
         patientService.deletePatient(1L);
-
         verify(patientRepo, times(1)).deleteById(1L);
     }
 }
