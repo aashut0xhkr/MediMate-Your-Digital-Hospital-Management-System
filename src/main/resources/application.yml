@@ -16,4 +16,4 @@ spring:
       name: user
       password: user123
   server:
-    port: 0
+    port: 1921
