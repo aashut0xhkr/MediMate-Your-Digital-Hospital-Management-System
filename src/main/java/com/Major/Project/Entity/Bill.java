@@ -38,7 +38,7 @@ public class Bill {
     @NotBlank(message = "Description is required")
     @Column(nullable = false, length = 255)
     private String description;
-
+  
     @NotNull(message = "Billing date cannot be null")
     @Column(name = "billing_date", nullable = false)
     private LocalDateTime billingDate;
