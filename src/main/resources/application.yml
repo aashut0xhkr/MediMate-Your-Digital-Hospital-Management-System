@@ -2,9 +2,9 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:mysql://localhost:3306/hospitallManagement?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/hospitallManagement
     username: root
-    password: anshuman9999
+    password: 8207
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -16,3 +16,5 @@ spring:
       name: user
       password: user123
 
+server:
+  port: 0

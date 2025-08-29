@@ -14,7 +14,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 public class Medicine {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
