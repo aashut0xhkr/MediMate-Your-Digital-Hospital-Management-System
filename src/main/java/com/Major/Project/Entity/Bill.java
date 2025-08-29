@@ -1,7 +1,7 @@
-package com.Major.Project.Billing.Entity;
+package com.Major.Project.Entity;
 
-import com.Major.Project.Patient.Entity.Patient;
-import com.Major.Project.Staff.Entity.Staff;
+import com.Major.Project.Entity.Patient;
+import com.Major.Project.Entity.Staff;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;

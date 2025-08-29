@@ -106,8 +106,8 @@ mvn spring-boot:run
 4. **Access APIs:**
 
 ```
-http://localhost:8080/api/v1/patients
-http://localhost:8080/api/v1/doctors
+http://localhost:8080/HMS/patients
+http://localhost:8080/HMS/doctors
 ...
 ```
 
@@ -115,14 +115,48 @@ http://localhost:8080/api/v1/doctors
 
 ## ▶️ Usage
 
-### API Endpoints (Sample)
+
+
+
+### API Endpoints for Hospital Management System
 
 | Endpoint | Method | Description |
-|---------|--------|-------------|
-| `/api/v1/patients` | GET/POST | Register or fetch patients |
-| `/api/v1/doctors` | GET/POST | Manage doctor data |
-| `/api/v1/appointments` | POST | Book an appointment |
-| `/api/v1/bills` | GET/POST | Generate and retrieve bills |
+| :--- | :--- | :--- |
+| **Appointment Management** | | |
+| `/HMS/Appointment` | `GET` / `POST` | Get all appointments or create a new one. |
+| `/HMS/Appointment/{id}` | `GET` / `PUT` / `DELETE` | Retrieve, update, or delete an appointment by ID. |
+| `/HMS/Appointment/doctor/{doctorId}` | `GET` | Get all appointments for a specific doctor. |
+| `/HMS/Appointment/patient/{patientId}`| `GET` | Get all appointments for a specific patient. |
+| **Billing Management** | | |
+| `/HMS/Bill` | `GET` / `POST` | Get all bills or create a new one. |
+| `/HMS/Bill/{id}` | `GET` / `PUT` / `DELETE` | Retrieve, update, or delete a bill by ID. |
+| `/HMS/Bill/Patient/{patientId}` | `GET` | Get all bills for a specific patient. |
+| **Doctor Management** | | |
+| `/HMS/Doctor` | `GET` / `POST` | Get all doctors or add a new one. |
+| `/HMS/Doctor/{id}` | `GET` / `PUT` / `DELETE` | Retrieve, update, or delete a doctor by ID. |
+| **Inventory Management** | | |
+| `/HMS/Inventory` | `GET` / `POST` | Get all inventory items or create a new one. |
+| `/HMS/Inventory/{inventoryId}` | `GET` / `PUT` / `DELETE` | Retrieve, update, or delete an item by ID. |
+| `/HMS/Inventory/status/{status}` | `GET` | Get inventory items by status. |
+| `/HMS/Inventory/category/{category}` | `GET` | Get inventory items by category. |
+| **Lab Test Management** | | |
+| `/HMS/LabTest` | `GET` / `POST` | Get all lab tests or create a new one. |
+| `/HMS/LabTest/{id}` | `GET` / `PUT` / `DELETE` | Retrieve, update, or delete a lab test by ID. |
+| `/HMS/LabTest/patient/{patientId}` | `GET` | Get all lab tests for a specific patient. |
+| `/HMS/LabTest/status/{status}` | `GET` | Get lab tests by status. |
+| **Medicine & Pharmacy Management** | | |
+| `/HMS/Medicine` | `GET` / `POST` | Get all medicines or add a new one. |
+| `/HMS/Medicine/{id}` | `GET` / `PUT` / `DELETE` | Retrieve, update, or delete a medicine by ID. |
+| `/HMS/Medicine/status/{status}` | `GET` | Get medicines by status. |
+| `/HMS/Medicine/search/{name}` | `GET` | Search for medicines by name. |
+| **Patient Management** | | |
+| `/HMS/Patient` | `GET` / `POST` | Get all patients or register a new one. |
+| `/HMS/Patient/{id}` | `GET` / `PUT` / `DELETE` | Retrieve, update, or delete a patient by ID. |
+| **Staff Management** | | |
+| `/HMS/Staff` | `GET` / `POST` | Get all staff members or add a new one. |
+| `/HMS/Staff/{id}` | `GET` / `PUT` / `DELETE` | Retrieve, update, or delete a staff member by ID. |
+| `/HMS/Staff/department/{department}` | `GET` | Get staff by department. |
+| `/HMS/Staff/role/{role}` | `GET` | Get staff by role. |
 
 > Postman collection coming soon!
 
