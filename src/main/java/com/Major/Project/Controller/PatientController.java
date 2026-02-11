@@ -6,6 +6,7 @@ import com.Major.Project.Service.PatientService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -15,25 +16,30 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
+    @PreAuthorize("hasRole('DOCTOR')")
     @GetMapping
     public List<PatientDTO> getPatient(){
         return patientService.getPatientList();
     }
+    @PreAuthorize("hasRole('DOCTOR') or hasRole('PATIENT')")
     @GetMapping("/{id}")
     public PatientDTO getPatientById(@PathVariable Long id){
         return patientService.getPatientListById(id);
     }
 
+    @PreAuthorize("hasRole('DOCTOR')")
     @PostMapping
     public PatientDTO savePatient(@RequestBody Patient patient){
         return patientService.createPatient(patient);
     }
+    @PreAuthorize("hasRole('DOCTOR')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
         patientService.deletePatient(id);
         return ResponseEntity.noContent().build();
     }
 
+    @PreAuthorize("hasRole('DOCTOR')")
     @PutMapping("/{id}")
     public ResponseEntity<PatientDTO> updatePatient(@PathVariable Long id,@RequestBody Patient patient){
         PatientDTO p=patientService.updatePatient(id,patient);

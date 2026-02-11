@@ -7,6 +7,7 @@ import com.Major.Project.Service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 
@@ -15,43 +16,52 @@ import java.util.List;
 public class StaffController {
     @Autowired
     private StaffService staffService;
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public List<StaffDTO> getAll() {
         return staffService.getAll();
     }
 
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DOCTOR')")
     @GetMapping("/{id}")
     public ResponseEntity<StaffDTO> getById(@PathVariable Long id) {
         StaffDTO staff = staffService.getById(id);
         return staff != null ? ResponseEntity.ok(staff) : ResponseEntity.notFound().build();
     }
 
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DOCTOR')")
     @GetMapping("/department/{department}")
     public List<StaffDTO> getByDepartment(@PathVariable String department) {
         return staffService.getByDepartment(department);
     }
 
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DOCTOR')")
     @GetMapping("/status/{status}")
     public List<StaffDTO> getByStatus(@PathVariable String status) {
         return staffService.getByStatus(status);
     }
 
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DOCTOR')")
     @GetMapping("/role/{role}")
     public List<StaffDTO> getByRole(@PathVariable String role) {
         return staffService.getByRole(role);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<StaffDTO> create(@RequestBody Staff staff) {
         return ResponseEntity.ok(staffService.create(staff));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<StaffDTO> update(@PathVariable Long id, @RequestBody Staff staff) {
         StaffDTO updated = staffService.update(id, staff);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         staffService.delete(id);
