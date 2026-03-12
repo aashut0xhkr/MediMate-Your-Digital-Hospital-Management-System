@@ -1,7 +1,22 @@
 
 # 🏥 MediMate - Your Digital Hospital Management System
 
-## 📈 Project Overview
+## � Table of Contents
+
+- [📈 Project Overview](#-project-overview)
+- [🔧 Features](#-features)
+- [🗂 Code Structure](#-code-structure)
+- [⛏ Installation](#-installation)
+- [▶️ Usage](#️-usage)
+- [🔐 Authentication](#-authentication)
+- [💡 Development Notes](#-development-notes)
+- [🛠️ Contributing](#️-contributing)
+- [📄 License](#-license)
+- [❤️ Contributors](#️-contributors)
+
+---
+
+## �📈 Project Overview
 
 **MediMate** is a Spring Boot-based Hospital Management System designed to streamline medical workflows in hospitals and clinics. It enables efficient management of patients, doctors, appointments, billing, staff, pharmacy, and diagnostics, all within a secure, modular, and scalable backend architecture.
 
