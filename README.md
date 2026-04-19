@@ -1,4 +1,3 @@
-
 # 🏥 MediMate - Your Digital Hospital Management System
 
 ## 📈 Project Overview
@@ -8,7 +7,6 @@
 ⚙️ Built for educational, clinical, and administrative use, MediMate supports role-based access and RESTful APIs to power modern healthcare platforms.
 
 ---
-
 ## 🔧 Features
 
 - 🧑‍⚕️ **Patient & Doctor Management**: Registration, profiles, and assignment handling.
@@ -22,9 +20,7 @@
 - 🧰 **Microservices Ready**: Modular structure with Eureka Service Discovery and API Gateway.
 - 📑 **PDF Generation**: Patient reports, bills, and appointment summaries.
 - 📬 **Email & SMS Notifications**: Alerts for appointments, prescriptions, and bills.
-
 ---
-
 ## 🗂 Code Structure
 
 ```
@@ -97,13 +93,10 @@ MediMate-Your-Digital-Hospital-Management-System/
                         └── PatientServiceTest.java
 
 ```
-
 > Each module is decoupled for scalability and future conversion to full microservices.
 
 ---
-
 ## ⛏ Installation
-
 ### Prerequisites
 
 - Java 8+
@@ -143,13 +136,11 @@ spring:
 ```
 
 3. **Run the application:**
-
 ```bash
 mvn spring-boot:run
 ```
 
 4. **Access APIs:**
-
 ```
 http://localhost:8080/HMS/patients
 http://localhost:8080/HMS/doctors
@@ -233,7 +224,6 @@ We welcome contributions to improve MediMate! 🛠️
 3. Commit changes: `git commit -m "Add feature"`  
 4. Push: `git push origin feature-name`  
 5. Submit a Pull Request
-
 ---
 ## 📄 License
 
@@ -247,6 +237,5 @@ Thanks to all contributors who make this project possible!
 <p align="center">
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="600">
 </p>
-
 ---
 
