@@ -1,7 +1,23 @@
 
 # 🏥 MediMate - Your Digital Hospital Management System
 
-## 📈 Project Overview
+## � Table of Contents
+
+- [📈 Project Overview](#-project-overview)
+- [🔧 Features](#-features)
+- [🗂 Code Structure](#-code-structure)
+- [🏗 System Architecture](#-system-architecture)
+- [⛏ Installation](#-installation)
+- [▶️ Usage](#️-usage)
+- [🔐 Authentication](#-authentication)
+- [💡 Development Notes](#-development-notes)
+- [🛠️ Contributing](#️-contributing)
+- [📄 License](#-license)
+- [❤️ Contributors](#️-contributors)
+
+---
+
+## �📈 Project Overview
 
 **MediMate** is a Spring Boot-based Hospital Management System designed to streamline medical workflows in hospitals and clinics. It enables efficient management of patients, doctors, appointments, billing, staff, pharmacy, and diagnostics, all within a secure, modular, and scalable backend architecture.
 
@@ -99,6 +115,73 @@ MediMate-Your-Digital-Hospital-Management-System/
 ```
 
 > Each module is decoupled for scalability and future conversion to full microservices.
+
+---
+
+## 🏗 System Architecture
+
+MediMate follows a **layered architecture** pattern that promotes separation of concerns, maintainability, and testability. Each layer has a well-defined responsibility and communicates only with its adjacent layers.
+
+### Architecture Layers
+
+```
+┌─────────────────────────────────┐
+│        Client / Postman         │
+└──────────────┬──────────────────┘
+               │ HTTP Requests
+┌──────────────▼──────────────────┐
+│       Security Layer (JWT)      │
+│   (Authentication & Authorization)
+└──────────────┬──────────────────┘
+               │
+┌──────────────▼──────────────────┐
+│       Controller Layer          │
+│   (REST API Endpoints + DTOs)   │
+└──────────────┬──────────────────┘
+               │
+┌──────────────▼──────────────────┐
+│        Service Layer            │
+│   (Business Logic & Validation) │
+└──────────────┬──────────────────┘
+               │
+┌──────────────▼──────────────────┐
+│       Repository Layer          │
+│   (Data Access via Spring Data) │
+└──────────────┬──────────────────┘
+               │
+┌──────────────▼──────────────────┐
+│        Entity Layer             │
+│   (JPA Entities / DB Tables)    │
+└──────────────┬──────────────────┘
+               │
+┌──────────────▼──────────────────┐
+│           MySQL Database        │
+└─────────────────────────────────┘
+```
+
+### Layer Descriptions
+
+| Layer | Responsibility | Example |
+| :--- | :--- | :--- |
+| **Controller** | Exposes RESTful API endpoints, handles HTTP requests/responses, and maps between DTOs and service calls. | `PatientController`, `DoctorController` |
+| **Service** | Contains core business logic, orchestrates operations, and enforces validation rules. Acts as a bridge between controllers and repositories. | `AppointmentService`, `BillService` |
+| **Repository** | Provides data access abstraction using Spring Data JPA. Handles CRUD operations and custom queries against the database. | `PatientRepository`, `MedicineRepository` |
+| **Entity** | Defines JPA entity classes that map directly to MySQL database tables. Represents the domain model of the system. | `Patient`, `Doctor`, `Appointment` |
+| **DTO** | Data Transfer Objects used to decouple the API contract from internal entities, ensuring clean request/response payloads. | `PatientDTO`, `BillDTO` |
+| **Security** | Manages authentication and authorization using JWT tokens and Spring Security. Protects endpoints and validates user identity. | `JwtUtil`, `SecurityConfig` |
+| **Configuration** | Houses custom exception handling and application-wide configuration. | `CustomException` |
+
+### Technologies Used
+
+| Technology | Purpose |
+| :--- | :--- |
+| **Spring Boot** | Application framework for building and running the backend |
+| **Spring Data JPA** | ORM and data access layer for database interactions |
+| **Spring Security** | Authentication and authorization framework |
+| **JWT (JSON Web Tokens)** | Stateless token-based authentication |
+| **MySQL** | Relational database for persistent data storage |
+| **Maven** | Build automation and dependency management |
+| **Docker** | Containerization for consistent deployment environments |
 
 ---
 
